@@ -1,4 +1,4 @@
-exports.chineseToNumber=function (chnStr) {
+exports.chinese2number=function (chnStr) {
     var chnNumChar = {
       零: 0,
       一: 1,
@@ -50,3 +50,19 @@ exports.chineseToNumber=function (chnStr) {
      return rtn + section;
   }
 
+exports.image2area=function(image,pos,add){
+    if(!pos.x){throw Error('第二个参数必须为位置')}
+    if(!image.imageWidth){throw Error('第一个参数必须为图片')}
+    if(!(add instanceof Array)){throw Error('第三个参数必须为数组')}
+    let x = pos.x
+    let y = pos.y
+    let w = image.imageWidth
+    let h = image.imageHeight
+    let out = {
+        left:x+add[0],
+        top:y+add[1],
+        right:x+w+add[2],
+        bottom:y+h+add[3]
+    }
+    return out
+}
